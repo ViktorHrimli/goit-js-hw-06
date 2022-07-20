@@ -22,11 +22,11 @@ const images = [
   },
 ];
 
-const ulList = document.querySelector(".gallery");
-ulList.style.display = "grid";
-ulList.style.gridGap = "40px";
-ulList.style.gridTemplateColumns = "repeat(3, 1fr)";
-ulList.style.listStyle = "none";
+const onList = document.querySelector(".gallery");
+onList.style.display = "grid";
+onList.style.gridGap = "40px";
+onList.style.gridTemplateColumns = "repeat(3, 1fr)";
+onList.style.listStyle = "none";
 
 function generateImage(url, alt) {
   return `
@@ -35,15 +35,14 @@ function generateImage(url, alt) {
         </li>
   `;
 }
-
 const imgCalc = images
   .map((img) => {
     return generateImage(img.url, img.alt);
   })
   .join("");
 
-ulList.insertAdjacentHTML("afterbegin", imgCalc);
-console.log(ulList);
+onList.insertAdjacentHTML("afterbegin", imgCalc);
+console.log(onList);
 
 // ручками \\
 

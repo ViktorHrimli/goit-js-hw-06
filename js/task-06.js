@@ -22,17 +22,29 @@
 //   border-color: #f44336;
 // }
 
-const inputIdElement = document.querySelector("#validation-input");
+const items = {
+  inputIdElement: document.querySelector("#validation-input"),
+  dataValueNum: document.querySelector('input[data-length="6"]'),
+};
+const count = Number(items.dataValueNum.dataset.length);
+items.inputIdElement.addEventListener("blur", onBorderChangeInput);
 
-const dataValueNum = document.querySelector('input[data-length="6"]');
-const count = Number(dataValueNum.dataset.length);
-
-inputIdElement.addEventListener("blur", (event) => {
-  console.log(event.currentTarget.value.length);
-  if (event.currentTarget.value.length > count) {
-    inputIdElement.classList.add("invalid");
+function onBorderChangeInput(event) {
+  if (event.currentTarget.value.length <= count) {
+    items.inputIdElement.classList.remove("invalid");
+    items.inputIdElement.classList.add("valid");
+  } else if (event.currentTarget.value.length >= count) {
+    items.inputIdElement.classList.remove("valid");
+    items.inputIdElement.classList.add("invalid");
   }
-  inputIdElement.classList.add("valid");
-});
+}
 
-console.log(inputIdElement);
+// short hand
+
+// inputIdElement.addEventListener("blur", (event) => {
+//   console.log(event.currentTarget.value.length);
+//   if (event.currentTarget.value.length > count) {
+//     inputIdElement.classList.add("invalid");
+//   }
+//   inputIdElement.classList.add("valid");
+// });

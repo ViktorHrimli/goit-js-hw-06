@@ -16,17 +16,17 @@ let calc = Number(counterValue.innerHTML);
 const decrementBtn = document.querySelector('button[data-action="decrement"]');
 const incrementBtn = document.querySelector('button[data-action="increment"]');
 
-const handleClickAdd = () => {
+const handleClickIncrement = () => {
   console.log("Value was increment");
   counterValue.innerHTML = calc += 1;
 };
-const handleClickRemove = () => {
+const handleClickDecrement = () => {
   console.log("Value was decrement");
   counterValue.innerHTML = calc -= 1;
 };
 
-incrementBtn.addEventListener("click", handleClickAdd);
-decrementBtn.addEventListener("click", handleClickRemove);
+incrementBtn.addEventListener("click", handleClickIncrement);
+decrementBtn.addEventListener("click", handleClickDecrement);
 
 // short-hand
 

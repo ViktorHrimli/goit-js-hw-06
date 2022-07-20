@@ -5,14 +5,25 @@
 // <br />
 // <span id="text">Abracadabra!</span>
 
-const inputRangeElem = document.querySelector("#font-size-control");
+const items = {
+  inputRangeElem: document.querySelector("#font-size-control"),
+  spanText: document.querySelector("#text"),
+};
 
-const spanText = document.querySelector("#text");
+function getRandomHexColor() {
+  return `#${Math.floor(Math.random() * 16777215).toString(16)}`;
+}
 
-console.log(inputRangeElem);
-console.log(spanText);
-console.log(inputRangeElem.value);
-inputRangeElem.addEventListener("change", (event) => {
-  console.log(event.currentTarget.value);
-  spanText.style.fontSize = event.currentTarget.value + "px";
-});
+items.inputRangeElem.addEventListener("change", onChangeFontSizeInput);
+
+function onChangeFontSizeInput(event) {
+  items.spanText.style.fontSize = event.currentTarget.value + "px";
+  items.spanText.style.color = getRandomHexColor();
+}
+
+//  short hand
+
+// items.inputRangeElem.addEventListener("change", (event) => {
+//   console.log(event.currentTarget.value);
+//   items.spanText.style.fontSize = event.currentTarget.value + "px";
+// });

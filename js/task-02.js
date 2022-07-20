@@ -18,21 +18,17 @@ const ingredients = [
   "Herbs",
   "Condiments",
 ];
-
+let conteinerList;
+const onItems = [];
 const refList = document.querySelector("#ingredients");
 
-const generateString = (string) => {
-  let conteinerList;
+const generateString = (event) => {
   conteinerList = document.createElement("li");
-  conteinerList.textContent = string;
+  conteinerList.textContent = event;
   conteinerList.classList.add("item");
-
-  refList.append(conteinerList);
-  return conteinerList;
+  onItems.push(conteinerList);
 };
 
-const liCalc = ingredients.map((ingredient) => {
-  return generateString(ingredient);
-});
-
+const liCalc = ingredients.map(generateString).join("");
+refList.append(...onItems);
 console.log(refList);

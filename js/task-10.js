@@ -20,41 +20,42 @@
 // }
 // Создай функцию destroyBoxes(), которая очищает содержимое div#boxes, тем самым удаляя все созданные элементы.
 
+const items = {
+  onCreateBtn: document.querySelector("button[data-create]"),
+  onDestroyBtn: document.querySelector("button[data-destroy]"),
+  inputEl: document.querySelector("input"),
+  divGaleryBoxes: document.querySelector("#boxes"),
+  onAppendDiv: document.createElement("div"),
+};
+
 function getRandomHexColor() {
   return `#${Math.floor(Math.random() * 16777215).toString(16)}`;
 }
 
-const createBtn = document.querySelector("button[data-create]");
-const destroyBtn = document.querySelector("button[data-destroy]");
-const inputEl = document.querySelector("input");
-const divGalery = document.querySelector("#boxes");
-
-const elRef = inputEl.addEventListener("input", (event) => {
-  console.log(Number(event.currentTarget.value));
+items.inputEl.addEventListener("blur", (event) => {
+  createBoxes(event.currentTarget.value);
 });
-function createBoxes(elRef) {
-  const divElMagic = document.createElement("div");
-  divElMagic.style.width = "30px";
-  divElMagic.style.height = "30px";
-  divElMagic.style.background = getRandomHexColor();
-  divGalery.append(divElMagic);
+
+function createBoxes(amount) {
+  const step = items.divGaleryBoxes.children.length;
+  let divElMagic;
+
+  for (let i = 0; i <= amount; i += 1) {
+    divElMagic = document.createElement("div");
+    divElMagic.classList.add("magic-div");
+    divElMagic.style.width = `${(step + i) * 10}px`;
+    divElMagic.style.height = `${(step + i) * 10}px`;
+    divElMagic.style.background = getRandomHexColor();
+
+    items.onAppendDiv.append(divElMagic);
+  }
 }
 
 function destroyBoxes() {
-  divGalery.innerHTML = "";
+  items.divGaleryBoxes.innerHTML = "";
 }
 
-createBtn.addEventListener("click", createBoxes);
-destroyBtn.addEventListener("click", destroyBoxes);
-
-// createBtn.addEventListener("click", () => {
-//   const divElMagic = document.createElement("div");
-//   divElMagic.style.width = "30px";
-//   divElMagic.style.height = "30px";
-//   divElMagic.style.background = getRandomHexColor();
-//   divGalery.append(divElMagic);
-// });
-
-// destroyBtn.addEventListener("click", () => {
-//   divGalery.innerHTML = "";
-// });
+items.onDestroyBtn.addEventListener("click", destroyBoxes);
+items.onCreateBtn.addEventListener("click", () => {
+  items.divGaleryBoxes.append(items.onAppendDiv);
+});

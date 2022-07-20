@@ -4,15 +4,14 @@
 // <input type="text" id="name-input" placeholder="Please enter your name" />
 // <h1>Hello, <span id="name-output">Anonymous</span>!</h1>
 
-const refInput = document.querySelector("#name-input");
-const refSpan = document.querySelector("#name-output");
+const elements = {
+  refInput: document.querySelector("#name-input"),
+  refSpan: document.querySelector("#name-output"),
+};
 
-refInput.addEventListener("blur", () => {
-  refSpan.textContent = "Anonymous";
-});
-
-refInput.addEventListener("input", (event) => {
-  refSpan.textContent = event.currentTarget.value;
-
-  console.log(event.currentTarget.value);
+elements.refInput.addEventListener("input", (event) => {
+  elements.refSpan.textContent = event.currentTarget.value;
+  if (event.currentTarget.value === "") {
+    elements.refSpan.textContent = "Anonymous";
+  }
 });
