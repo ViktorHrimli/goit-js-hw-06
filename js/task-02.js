@@ -31,4 +31,3 @@ const generateString = (event) => {
 
 const liCalc = ingredients.map(generateString).join("");
 refList.append(...onItems);
-console.log(refList);
