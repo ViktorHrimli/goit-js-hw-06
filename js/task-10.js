@@ -48,7 +48,6 @@ function createBoxes(amount) {
     divElMagic.style.background = getRandomHexColor();
 
     items.onAppendDiv.append(divElMagic);
-    console.log(divElMagic);
   }
 }
 
