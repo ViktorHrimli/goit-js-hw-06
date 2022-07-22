@@ -14,6 +14,6 @@ const refsItems = {
 refsItems.btnClass.addEventListener("click", handleClick);
 
 function handleClick() {
-  refsItems.spanColor.textContent = getRandomHexColor();
-  refsItems.bodyColor.style.background = getRandomHexColor();
+  const value = (refsItems.bodyColor.style.background = getRandomHexColor());
+  refsItems.spanColor.textContent = value;
 }

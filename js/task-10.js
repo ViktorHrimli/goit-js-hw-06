@@ -31,9 +31,9 @@ const items = {
 function getRandomHexColor() {
   return `#${Math.floor(Math.random() * 16777215).toString(16)}`;
 }
-
+let numberInput;
 items.inputEl.addEventListener("blur", (event) => {
-  createBoxes(event.currentTarget.value);
+  numberInput = event.currentTarget.value;
 });
 
 function createBoxes(amount) {
@@ -48,6 +48,7 @@ function createBoxes(amount) {
     divElMagic.style.background = getRandomHexColor();
 
     items.onAppendDiv.append(divElMagic);
+    console.log(divElMagic);
   }
 }
 
@@ -57,5 +58,6 @@ function destroyBoxes() {
 
 items.onDestroyBtn.addEventListener("click", destroyBoxes);
 items.onCreateBtn.addEventListener("click", () => {
+  createBoxes(numberInput);
   items.divGaleryBoxes.append(items.onAppendDiv);
 });

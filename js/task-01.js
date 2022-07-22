@@ -6,19 +6,26 @@
 
 const refItemsList = document.querySelectorAll(".item");
 console.log(`Numbers of categories: ${refItemsList.length}`);
-
-const refNameCategories = document.querySelectorAll("h2");
-const elListname = document.querySelectorAll("#categories ul");
+const refItemsAnimal = {
+  NameCategories: document.querySelectorAll("h2"),
+  elListname: document.querySelectorAll("#categories ul"),
+};
 
 console.log("");
 
-console.log(`Category: ${refNameCategories[0].textContent}`);
-console.log(`Elements: ${elListname[0].children.length}`);
-console.log("");
+const categoriesList = [...refItemsAnimal.NameCategories];
+const elementList = [...refItemsAnimal.elListname];
 
-console.log(`Category: ${refNameCategories[1].textContent}`);
-console.log(`Elements: ${elListname[1].children.length}`);
-console.log("");
+let i = [];
+for (i = 0; i < categoriesList; i += 1) {}
+elementList.map((element, i) => {
+  let itemName = [];
 
-console.log(`Category: ${refNameCategories[2].textContent}`);
-console.log(`Elements: ${elListname[2].children.length}`);
+  for (const categori of categoriesList) {
+    itemName.push(categori.textContent);
+  }
+
+  console.log(`Categories: ${itemName[i]}`);
+  console.log(`Elements: ${element.children.length}`);
+  console.log("");
+});

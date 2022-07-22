@@ -13,9 +13,11 @@ const items = {
 function getRandomHexColor() {
   return `#${Math.floor(Math.random() * 16777215).toString(16)}`;
 }
+console.log(items.inputRangeElem);
+console.log(items.spanText);
 
-items.inputRangeElem.addEventListener("change", onChangeFontSizeInput);
-
+items.inputRangeElem.addEventListener("input", onChangeFontSizeInput);
+items.spanText.style.fontSize = "56px";
 function onChangeFontSizeInput(event) {
   items.spanText.style.fontSize = event.currentTarget.value + "px";
   items.spanText.style.color = getRandomHexColor();
